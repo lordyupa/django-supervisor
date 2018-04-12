@@ -13,7 +13,6 @@ import os
 import shutil
 
 from django import template
-from io import open
 register = template.Library()
 
 current_context = None

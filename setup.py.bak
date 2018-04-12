@@ -1,7 +1,6 @@
 
 from __future__ import absolute_import
 import sys
-from io import open
 setup_kwds = {}
 if sys.version_info > (3,):
     from setuptools import setup
@@ -32,7 +31,7 @@ while "__version__" not in ln:
 while "__version__" in ln:
     lines.append(ln)
     ln = next(src)
-exec("".join(lines), info)
+exec("".join(lines),info)
 
 
 NAME = "django-supervisor"
@@ -44,7 +43,7 @@ AUTHOR_EMAIL = "ryan@rfk.id.au"
 URL="http://github.com/rfk/django-supervisor"
 LICENSE = "MIT"
 KEYWORDS = "django supervisord process"
-PACKAGES = ["djsupervisor", "djsupervisor.management",
+PACKAGES = ["djsupervisor","djsupervisor.management",
             "djsupervisor.management.commands", "djsupervisor.templatetags"]
 PACKAGE_DATA = {
   "djsupervisor": ["contrib/*/supervisord.conf",],
