@@ -67,7 +67,7 @@ def get_merged_config(**options):
     #  values from later files overwrite values from former.
     cfg = RawConfigParser()
     #  Start from the default configuration options.
-    data = render_config(DEFAULT_CONFIG, ctx).encode()
+    data = render_config(DEFAULT_CONFIG, ctx).decode()
     cfg.readfp(StringIO(data))
     #  Add in the project-specific config file.
     with open(config_file, "r") as f:
