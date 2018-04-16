@@ -46,7 +46,7 @@ from djsupervisor.events import CallbackModifiedHandler
 
 AUTORELOAD_PATTERNS = getattr(settings, "SUPERVISOR_AUTORELOAD_PATTERNS",
                               ['*.py'])
-AUTORELOAD_IGNORE = getattr(settings, "SUPERVISOR_AUTORELOAD_IGNORE_PATTERNS", 
+AUTORELOAD_IGNORE = getattr(settings, "SUPERVISOR_AUTORELOAD_IGNORE_PATTERNS",
                             [".*", "#*", "*~"])
 
 class Command(BaseCommand):
@@ -257,7 +257,7 @@ class Command(BaseCommand):
         # This will avoid errors with e.g. too many inotify watches.
         from watchdog.observers import Observer
         from watchdog.observers.polling import PollingObserver
-        
+
         observer = None
         for ObserverCls in (Observer, PollingObserver):
             observer = ObserverCls()
@@ -375,4 +375,13 @@ class OnDemandStringIO(object):
         line = self.fp.readline(*args, **kwds)
         if not line:
             self._fp = None
+        return line
+    def __iter__(self):
+        self._fp = None
+        return self
+
+    def __next__(self, *args, **kwds):
+        line = self.readline(*args, **kwds)
+        if not line:
+            raise StopIteration
         return line

@@ -72,7 +72,7 @@ setup(
   package_data=PACKAGE_DATA,
   classifiers=CLASSIFIERS,
   install_requires=[
-    "supervisor",
+    "supervisor==4.0.0.dev0",
     "watchdog",
   ],
   **setup_kwds
