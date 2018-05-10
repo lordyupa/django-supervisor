@@ -376,6 +376,7 @@ class OnDemandStringIO(object):
         if not line:
             self._fp = None
         return line
+
     def __iter__(self):
         self._fp = None
         return self
@@ -385,3 +386,6 @@ class OnDemandStringIO(object):
         if not line:
             raise StopIteration
         return line
+
+    def next(self):
+        return self.__next__()
